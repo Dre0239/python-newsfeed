@@ -1,6 +1,4 @@
-from app.models import User
 from app.db import Session, Base, engine
-from app.models import User, Post
 from app.models import User, Post, Comment, Vote
 
 # drop and rebuild tables

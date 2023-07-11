@@ -19,5 +19,13 @@ def get_db():
 
   return g.db
 
-def init_db():
+def close_db(e=None):
+  db = g.pop('db', None)
+
+  if db is not None:
+    db.close()
+
+def init_db(app):
   Base.metadata.create_all(engine)
+
+  app.teardown_appcontext(close_db)

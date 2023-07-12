@@ -1,7 +1,9 @@
 from datetime import datetime
 from app.db import Base
+from .Vote import Vote
 from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import relationship, column_property
+from sqlalchemy import select, func
 
 class Post(Base):
   __tablename__ = 'posts'
@@ -15,7 +17,10 @@ class Post(Base):
 
   user = relationship('User')
   comments = relationship('Comment', cascade='all,delete')
-  
+  votes = relationship('Vote', cascade='all, delete')
 
+  vote_count = column_property(
+    lambda: select([func.count(Vote.id)]).where(Vote.post_id == Post.id)
+)
 
  

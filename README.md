@@ -30,7 +30,7 @@ This Just Tech News application is refactored to use Python instead of Javascrip
 
 ## Deployment
 
-- The application has been deployed to Heroku:-
+- The application has been deployed to Heroku: https://apf-7cf66d94658c.herokuapp.com/
 
   ![alt text](./assets/img03.jpg)
 
